@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<div th:replace="cabecalho :: head"></div>
+
+	<title>Crud Manager - Instituições</title>
+</head>
+
+<body>
+	<div class="container my-2">
+		<h2>Instituição</h2>
+		<form action="#" th:action="@{/institutions/new}" th:object="${institution}" method="POST">
+			<input type="hidden" th:field="*{id}" id="id">
+			
+			<span th:if="${#fields.hasErrors('name')}"
+				  th:errors="*{name}"></span>
+			<input type="text" th:field="*{name}" placeholder="Nome" class="form-control mb-4 col-4"> 
+			
+			<span th:if="${#fields.hasErrors('phone')}"
+				  th:errors="*{phone}"></span>
+			<input type="number" th:field="*{phone}" placeholder="Telefone" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('address')}"
+				  th:errors="*{address}"></span>
+			<input type="text" th:field="*{address}" placeholder="Endereço" class="form-control mb-4 col-4">
+			
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		<hr>
+		<a th:href="@{/institutions}">institutições</a>
+	</div>
+</body>
+</html>
